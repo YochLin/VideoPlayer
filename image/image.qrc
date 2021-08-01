@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>start.png</file>
+        <file>start_hover.png</file>
+        <file>stop.png</file>
+        <file>stop_hover.png</file>
+        <file>pause.png</file>
+        <file>pause_hover.png</file>
+        <file>sound.png</file>
+        <file>sound_mute.png</file>
+    </qresource>
+</RCC>

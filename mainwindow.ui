@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>783</width>
+    <height>595</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="VideoRender" name="video_render">
+      <property name="minimumSize">
+       <size>
+        <width>765</width>
+        <height>490</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_play">
+        <property name="minimumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{ 
+image: url(:start.png);
+border-radius:0px; 
+}  
+QPushButton:hover{ 
+image: url(:start_hover.png);
+border-radius:0px; 
+} 
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_pause">
+        <property name="minimumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{ 
+image: url(:pause.png);
+border-radius:0px; 
+}  
+QPushButton:hover{ 
+image: url(:pause_hover.png);
+border-radius:0px; 
+} 
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_stop">
+        <property name="minimumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{ 
+image: url(:stop.png);
+border-radius:0px; 
+}  
+QPushButton:hover{ 
+image: url(:stop_hover.png);
+border-radius:0px; 
+} 
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="horizontalSlider">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal {
+border: 0px solid #bbb;
+}
+
+QSlider::sub-page:horizontal {
+background-color: #ff9900;
+border-bottom-left-radius: 2px; 
+border-top-left-radius: 2px; 
+
+border-radius: 2px; 
+margin-top:5px;
+margin-bottom:5px;
+}
+
+QSlider::add-page:horizontal {
+background-color: rgba(228, 228, 228, 50);v
+border: 0px solid #777;
+border-radius: 2px;
+margin-top:5px;
+margin-bottom:5px;
+}
+/*
+QSlider::handle:horizontal {
+background: rgb(255,153,102); 
+border: 1px solid rgb(255,153,102); 
+width: 14px;
+height:10px;
+border-radius: 7px;
+margin-top:2px;
+margin-bottom:2px;
+}
+
+QSlider::handle:horizontal:hover {
+background: rgb(255,128,6); 
+border: 1px solid rgba(102,102,102,102);
+border-radius: 7px;
+}*/
+
+QSlider::sub-page:horizontal:disabled {
+background: #bbb;
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+background: #eee;
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #eee;
+border: 1px solid #aaa;
+border-radius: 2px;
+}
+</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_volume">
+        <property name="minimumSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{ 
+image: url(:sound.png);
+border-radius:0px; 
+padding:5px;
+}  
+QPushButton:hover{ 
+image: url(:stop_focus.png);
+border-radius:0px; 
+padding:3px;
+} 
+QPushButton:!checked{ 
+image: url(:sound.png);
+} 
+QPushButton:checked{ 
+image: url(:sound_mute.png);
+} 
+
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>783</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_File"/>
+    <addaction name="actionRtsp_Streaming"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_File">
+   <property name="text">
+    <string>Open File</string>
+   </property>
+  </action>
+  <action name="actionRtsp_Streaming">
+   <property name="text">
+    <string>Rtsp Streaming</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>VideoRender</class>
+   <extends>QOpenGLWidget</extends>
+   <header>video_render.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
