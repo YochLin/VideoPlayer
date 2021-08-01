@@ -15,4 +15,4 @@ This is simple project for exercise how to use ffmpeg.
 - [ ] chose player device
 
 ## Demo
-![image](https://i.imgur.com/EKTxFbP.gif)
+![image](https://i.imgur.com/TAvfKSb.gif)
