@@ -13,7 +13,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, VideoEventCallBack
 {
     Q_OBJECT
 
@@ -42,5 +42,9 @@ private:
 
     void OpenFile();
     void OpenRTSP();
+
+protected:
+
+    void totalTimeChange(const int64_t &uSec) override;
 };
 #endif // MAINWINDOW_H

@@ -35,5 +35,6 @@ SOURCES += \
 
 HEADERS += \
     $$PWD/src/decoder.h \
+    $$PWD/src/video_event_callback.h \
     $$PWD/src/video_render.h
 

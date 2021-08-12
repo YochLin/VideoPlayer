@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -38,7 +39,11 @@ public:
     QPushButton *pushButton_pause;
     QPushButton *pushButton_stop;
     QSlider *horizontalSlider;
+    QLabel *current_time;
+    QLabel *label_3;
+    QLabel *totalTime;
     QPushButton *pushButton_volume;
+    QSlider *horizontalSlider_2;
     QMenuBar *menubar;
     QMenu *menuFile;
     QStatusBar *statusbar;
@@ -75,6 +80,10 @@ public:
 "image: url(:start_hover.png);\n"
 "border-radius:0px; \n"
 "} \n"
+"QPushButton:pressed{ \n"
+"image: url(:start.png);\n"
+"border-radius:0px; \n"
+"}\n"
 ""));
 
         horizontalLayout->addWidget(pushButton_play);
@@ -90,6 +99,10 @@ public:
 "image: url(:pause_hover.png);\n"
 "border-radius:0px; \n"
 "} \n"
+"QPushButton:pressed{ \n"
+"image: url(:pause.png);\n"
+"border-radius:0px; \n"
+"}\n"
 ""));
 
         horizontalLayout->addWidget(pushButton_pause);
@@ -170,6 +183,27 @@ public:
 
         horizontalLayout->addWidget(horizontalSlider);
 
+        current_time = new QLabel(centralwidget);
+        current_time->setObjectName(QString::fromUtf8("current_time"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Consolas"));
+        font.setPointSize(12);
+        current_time->setFont(font);
+
+        horizontalLayout->addWidget(current_time);
+
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setFont(font);
+
+        horizontalLayout->addWidget(label_3);
+
+        totalTime = new QLabel(centralwidget);
+        totalTime->setObjectName(QString::fromUtf8("totalTime"));
+        totalTime->setFont(font);
+
+        horizontalLayout->addWidget(totalTime);
+
         pushButton_volume = new QPushButton(centralwidget);
         pushButton_volume->setObjectName(QString::fromUtf8("pushButton_volume"));
         pushButton_volume->setMinimumSize(QSize(36, 36));
@@ -193,6 +227,70 @@ public:
 ""));
 
         horizontalLayout->addWidget(pushButton_volume);
+
+        horizontalSlider_2 = new QSlider(centralwidget);
+        horizontalSlider_2->setObjectName(QString::fromUtf8("horizontalSlider_2"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(horizontalSlider_2->sizePolicy().hasHeightForWidth());
+        horizontalSlider_2->setSizePolicy(sizePolicy);
+        horizontalSlider_2->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal {\n"
+"border: 0px solid #bbb;\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"background: rgb(235,97,0);\n"
+"border-radius: 0px;\n"
+"margin-top:8px;\n"
+"margin-bottom:8px;\n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal {\n"
+"background: rgb(255,255, 255);\n"
+"border: 0px solid #777;\n"
+"border-radius: 2px;\n"
+"margin-top:8px;\n"
+"margin-bottom:8px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"background: rgb(255,153,102); \n"
+"border: 1px solid rgb(255,153,102); \n"
+"width: 8px;\n"
+"height:8px;\n"
+"border-radius: 2px;\n"
+"margin-top:6px;\n"
+"margin-bottom:6px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"background: rgb(255,128,6); \n"
+"border: 1px solid rgba(102,102,102,102);\n"
+"border-radius: 7px;\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal:disabled {\n"
+"background: #bbb;\n"
+"border-color: #999;\n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal:disabled {\n"
+"background: #eee;\n"
+"border-color: #999;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:disabled {\n"
+"background: #eee;\n"
+""
+                        "border: 1px solid #aaa;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+""));
+        horizontalSlider_2->setOrientation(Qt::Horizontal);
+
+        horizontalLayout->addWidget(horizontalSlider_2);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -225,6 +323,9 @@ public:
         pushButton_play->setText(QString());
         pushButton_pause->setText(QString());
         pushButton_stop->setText(QString());
+        current_time->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "/", nullptr));
+        totalTime->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));
         pushButton_volume->setText(QString());
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi

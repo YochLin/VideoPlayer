@@ -10,6 +10,8 @@ Decoder::Decoder()
 
     sdl_video_mutex = SDL_CreateMutex();
     sdl_video_cond = SDL_CreateCond();
+
+    videoCallBack = nullptr;
 }
 
 Decoder::~Decoder()
@@ -128,6 +130,14 @@ void Decoder::InitDecoder(QString path)
     }
 
     VideoStartTime = av_gettime();
+
+    if(videoCallBack != nullptr)
+    {
+        videoCallBack->totalTimeChange(pFormatContext->duration);
+        qDebug() << "get total time";
+    }
+
+
     while(decode_loop)
     {
         qDebug() << audioPackList.size() << videoPackList.size();

@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     videoDecoder = new Decoder();
+    videoDecoder->SetVideoCallBack(this);  // 設置回調函數指標，指向 MainWindow 讓回調函數可以使用該函式
+
     bufferSize = 0;
     buffer = nullptr;
 
@@ -84,4 +86,28 @@ void MainWindow::GetVideoData(uint8_t *data, int width, int height)
     std::copy(data, data+width*height*3/2, buffer);
 
     ui->video_render->getOneFrame(buffer, width, height);
+}
+
+
+void MainWindow::totalTimeChange(const int64_t &uSec)
+{
+    qint64 Sec = uSec/1000000;
+    qDebug() << "get total time2";
+    ui->horizontalSlider->setRange(0,Sec);
+
+    QString totalTime;
+    QString hStr = QString("0%1").arg(Sec/3600);
+    QString mStr = QString("0%1").arg(Sec / 60 % 60);
+    QString sStr = QString("0%1").arg(Sec % 60);
+
+    if (hStr == "00")
+    {
+        totalTime = QString("%1:%2").arg(mStr.right(2)).arg(sStr.right(2));
+    }
+    else
+    {
+        totalTime = QString("%1:%2:%3").arg(hStr).arg(mStr.right(2)).arg(sStr.right(2));
+    }
+
+    ui->totalTime->setText(totalTime);
 }

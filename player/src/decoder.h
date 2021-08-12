@@ -10,6 +10,8 @@
 #include <QTimer>
 #include <QEventLoop>
 
+#include "video_event_callback.h"
+
 extern "C"
 {
     #include <libavcodec/avcodec.h>
@@ -51,6 +53,7 @@ public:
 //    void stop();
 
     bool decode_loop;
+    void SetVideoCallBack(VideoEventCallBack *pointer){videoCallBack=pointer;}
 
 Q_SIGNALS:
     void SendVideoData(uint8_t *data, int width, int height);
@@ -65,6 +68,7 @@ private:
     AVFormatContext *pFormatContext;
 
     void wait_mSec(int msec);
+    int64_t videoTotalTime;
 
     // video
     AVCodecContext *vCodecContext;
@@ -87,7 +91,6 @@ private:
     QMutex audio_mutex;
     SDL_AudioDeviceID audioID;             // 音響設備
     int audio_index;
-//    AVFrame *audioResample;
     QList<AVPacket> audioPackList;
     uint8_t audio_buff[(MAX_AUDIO_FRAME_SIZE*3)/2];
     SwrContext *swrCtx;
@@ -106,7 +109,10 @@ private:
 
     // 影音同步
     uint64_t VideoStartTime;
+    int64_t getTotalTime();
 
+    // 事件回條函數
+    VideoEventCallBack *videoCallBack;
 
 
 };
