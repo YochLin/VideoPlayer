@@ -1,0 +1,8 @@
+[submodule "3rdparty/ffmpeg"]
+	path = 3rdparty/ffmpeg
+	url = https://github.com/FFmpeg/FFmpeg.git
+	branch = release/5.1
+[submodule "3rdparty/SDL2"]
+	path = 3rdparty/SDL2
+	url = https://github.com/libsdl-org/SDL.git
+	branch = SDL2
