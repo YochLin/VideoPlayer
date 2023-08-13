@@ -6,3 +6,6 @@
 	path = 3rdparty/SDL2
 	url = https://github.com/libsdl-org/SDL.git
 	branch = SDL2
+[submodule "3rdparty/h264bitstream"]
+	path = 3rdparty/h264bitstream
+	url = https://github.com/aizvorski/h264bitstream.git
